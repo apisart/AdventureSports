@@ -1,0 +1,153 @@
+/**
+    Ref:  https://www.w3schools.com/sass/sass_import.php
+          https://www.w3schools.com/sass/sass_mixin_include.php
+ */
+
+/* ################################# */
+$gFont: Helvetica, sans-serif;
+$gFontSize: 18px;
+$gColor: blue;
+$gBgColor: pink;
+
+
+// html, body, ul, ol {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// body {
+//   font-family: $gFont;
+//   font-size: $gFont;
+//   color: $gColor;
+//   background-color: $gBgColor;
+// }
+
+body {
+	//=================================
+	// background-image: url("assets/img/WebBG.jpg");     // NOT WK
+	background-image: url("/assets/img/WebBG.jpg");       // WK
+
+	//background-position: left top;
+	// background-size: cover;
+
+	// background-repeat: no-repeat;
+	background-repeat: repeat-y;
+	// background-attachment: fixed;
+	background-attachment: scroll;
+	//=================================
+}
+
+//=================================
+.center-text {
+	text-align: center;
+}
+
+.center-img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+//=================================
+
+
+/**
+    Ref:  https://www.w3schools.com/sass/sass_mixin_include.php
+
+    Tip: A tip on hyphens and underscore in Sass:
+    Hyphens and underscores are considered to be the same.
+    This means that @mixin important-text { } and @mixin important_text { }
+    are considered as the same mixin!
+*/
+
+@mixin important-border() {
+	border: 1px solid blue;
+}
+@mixin important-text() {
+	color: red;
+	font-size: 25px;
+	font-weight: bold;
+	@include important-border();	// A mixin can also include other mixins
+}
+.myDanger {
+	@include important-text();
+	background-color: yellow;
+}
+
+// Using a Mixin For Vendor Prefixes
+@mixin transform($property) {
+	-webkit-transform: $property;
+	-ms-transform: $property;
+	transform: $property;
+}
+.myTrans {
+	@include transform(rotate(30deg));
+}
+
+// Passing Variables to a Mixin
+@mixin bordered($color, $width) {
+	border: $width solid $color;
+}
+.myArticle {
+	@include bordered(blue, 1px);
+}
+.myNotes {
+	@include bordered(red, 2px);
+}
+
+// Default Values for a Mixin
+@mixin bordered($color: blue, $width: 1px) {
+	border: $width solid $color;
+}
+.myTips {
+	@include bordered($color: orange);	// Then, you only need to specify the values that change when you include the mixin
+}
+
+// Sass @extend Directive
+$font-sizes1: (12px 18px 24px);
+$font-sizes2: ("small": 12px, "normal": 18px, "large": 24px);
+$px: str-insert("", "px", str-length("") + 1);
+.button-basic {
+	border: none;
+	padding: 15px 30px;
+	text-align: center;
+	// font-size: 16px;
+	// font-size: unquote(round(15.5) + "px");
+	// font-size: unquote(round(15.5) + $px);
+	// font-size: nth($font-sizes1, 1);
+	font-size: map-get($font-sizes2, "normal");
+	cursor: pointer;
+}
+.button-report {
+	@extend .button-basic;
+	background-color: red;
+}
+.button-submit {
+	@extend .button-basic;
+	// background-color: rgb(255, 1, 1);
+	// background-color: rgba(red, 30%);
+	// background-color: rgba(1, 255, 1, 0.8);
+	// background-color: hsl(120, 100%, 50%);
+	// background-color: hsla(120, 100%, 75%, 0.3);
+	// background-color: grayscale(#7fffd4);
+	// background-color: complement(yellow);
+	// background-color: invert(white);
+	// background-color: rgb(red(#ffaabb), blue(blue), 0);
+	// background-color: mix(red, yellow, 50%);
+	// background-color: adjust-hue(red, 80deg);
+	// background-color: color.adjust(#6b717f, $red: 15);
+	// background-color: color.adjust(rgb(255, 1, 1), $red: -10);
+	// background-color: color.change(#d2e1dd, $red: 100, $blue: 50);
+	// background-color: scale-color(red, $lightness: -20%);
+	// background-color: lighten(red, 50%);
+	// background-color: darken(red, 50%);
+	// background-color: saturate(red, 50%);
+	// background-color: desaturate(red, 50%);
+	// background-color: opacify(red, 0.4);
+	// background-color: fade-in(red, 0.4);
+	// background-color: fade-out(red, 0.4);
+	background-color: transparentize(red, 0.4);
+	color: white;
+}
+
+/* ################################# */

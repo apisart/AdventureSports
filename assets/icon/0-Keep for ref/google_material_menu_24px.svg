@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="24px" height="24px" viewbox="0 0 24 24" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M0 12L18 12L18 10L0 10L0 12ZM0 7L18 7L18 5L0 5L0 7ZM0 0L0 2L18 2L18 0L0 0Z" transform="translate(3 6)" id="path_1" />
+    <clipPath id="mask_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="iconnavigationmenu_24px">
+    <path d="M0 12L18 12L18 10L0 10L0 12ZM0 7L18 7L18 5L0 5L0 7ZM0 0L0 2L18 2L18 0L0 0Z" transform="translate(3 6)" id="-↳Color" fill="#000000" fill-rule="evenodd" stroke="none" />
+  </g>
+</svg>
